@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Chat-App</title>
+        <title>{{ title }}</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -13,11 +13,15 @@
       <div class="container ">
       	<h2 class="display-4 text-center">Chat-App</h2>
       	<div class="bg-light-subtle">
+          {% if message %}
+            <h3>{{ message }}</h3>
+          {% endif%}
       		<h1>Username</h1>
-      		<form>
-      			<input type="text" placeholder="chat" />
-      			<button> send </button>
-      		</form>
+      		<form method="POST" action="/">
+                {{ form.csrf_token }}
+                {{ form.textMessage }}
+                <input type="submit" value="Send">
+            </form>
       	</div>
       </div>
     </body>

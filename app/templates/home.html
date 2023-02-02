@@ -1,0 +1,27 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        
+        <title>{{ title }}</title>
+       
+    </head>
+    <body>
+        <h1>Home</h1>
+        {% if message %}
+            <h3>{{ message }}</h3>
+        {% endif%}
+        <form method="POST" action="/">
+            {{ createRoomForm.csrf_token }}
+            {{ createRoomForm.name.label }}
+            {{ createRoomForm.newSubmit }}
+        </form>
+
+        <h3>Join a Room</h3>
+        <form method="POST" action="/">
+            {{ roomJoinForm.csrf_token }}
+            {{ roomJoinForm.key.label }}
+            {{ roomJoinForm.key }}
+            {{ roomJoinForm.joinSubmit }}
+        </form>    
+    </body>
+</html>
