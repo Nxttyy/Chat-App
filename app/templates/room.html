@@ -17,11 +17,15 @@
             <h3>{{ message }}</h3>
           {% endif%}
       		<h1>Username</h1>
-      		<form method="POST" action="/">
+          {% for message in messages %}
+            <h4>{{ message.content }}
+          {% endfor %}
+      		<form method="POST" action="">
                 {{ form.csrf_token }}
+                {{ form.textMessage.label }}
                 {{ form.textMessage }}
-                <input type="submit" value="Send">
-            </form>
+                {{ form.messageSubmit }}            
+          </form>
       	</div>
       </div>
     </body>

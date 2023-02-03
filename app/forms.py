@@ -4,6 +4,7 @@ from wtforms.validators import InputRequired
 
 class ChatForm(FlaskForm):
 	textMessage = StringField("chat", validators= [ InputRequired() ] )
+	messageSubmit = SubmitField('send')
 
 class JoinRoom(FlaskForm):
 	key = StringField("Key", validators = [InputRequired() ])
