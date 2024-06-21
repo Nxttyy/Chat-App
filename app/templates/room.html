@@ -1,32 +1,43 @@
 <!doctype html>
 <html class="no-js" lang="">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>{{ title }}</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>{{ title }}</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+      />
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
     </head>
-    <body class="bg-dark">
-      <div class="container ">
-      	<h2 class="display-4 text-center">Chat-App</h2>
-      	<div class="bg-light-subtle">
-          {% if message %}
-            <h3>{{ message }}</h3>
-          {% endif%}
-      		<h1>Username</h1>
-          {% for message in messages %}
-            <h4>{{ message.content }}
-          {% endfor %}
-      		<form method="POST" action="">
-                {{ form.csrf_token }}
-                {{ form.textMessage.label }}
-                {{ form.textMessage }}
-                {{ form.messageSubmit }}            
-          </form>
-      	</div>
-      </div>
-    </body>
-</html>
+    <body >
+      <div class="container m-5">
+        <!-- <h2 class="display-4 text-center">Chat-App</h2> -->
+        <div class="scrollable-div">
+          <div class="p-5  left-col h-80 bg-info">
+            <!-- {% if message %}
+              <p>{{ message }}</p>
+            {% endif%} -->
+            <p>Username</p>
+            {% for message in messages %}
+              <div class="message m-2 scrollable-div"><p>{{ message.content }}</p><p>username</p></div>
+              <!-- <p>{{ message.content }}</p> -->
+            {% endfor %}
+            <form method="POST" action="" class="message-input-form mb-5">
+              {{ form.csrf_token }}
+              <!-- {{ form.textMessage.label }} -->
+              {{ form.textMessage }}
+              {{ form.messageSubmit }}
+            </form>
+          </div>
+        </div>
+      </body>
+    </html>

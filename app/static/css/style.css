@@ -1,0 +1,97 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0px;
+  background-color: #ffd500;
+  color: white;/*  background-color: "red";*/
+  height: 100%;
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+  font-variation-settings: "slnt" 0;
+}
+
+.container {
+  height: 100%;
+}
+
+.main-row {
+  height: 75%;
+}
+
+.left-col {
+  color: #03071e;
+  background-color: #ffee32;
+}
+
+.right-col {
+  color: #ffee32;
+  background-color: #03071e;
+}
+
+/*<uniquifier>: Use a unique and descriptive class name*/
+
+/*<weight>: Use a value from 100 to 900*/
+
+.inter-title {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+  font-variation-settings: "slnt" 0;
+}
+
+.create-room-submit {
+  border: 2px solid #f3fae1;
+  background-color: #03071e;
+  color: #ffee32;
+  box-sizing: border-box;
+  border-radius: 4px; /* Rounded corners */
+  font-size: 20px; /* Font size */
+}
+
+.room-id {
+  background-color: #ffffcc; /* Light yellow background */
+  padding: 20px;
+  border-radius: 4px;
+  display: inline-block; /* Make it fit the content */
+  position: relative; /* Position relative to parent for absolute positioning of the button */
+  font-size: 19px; /* Font size */
+}
+
+.message * {
+  padding: 0;
+  margin: 0;
+}
+
+
+.message {
+  display: flex;
+  flex-direction: column;
+  color: #ffee32;
+  background-color: #03071e;
+
+}
+
+/* Style for the scrollable div */
+.scrollable-div {
+
+ 
+  overflow-y: auto; /* Scrollable vertically */
+  
+}
+
+
+.message-input-form {
+  position: absolute;
+  bottom: 0; /* Stick to the bottom */
+}

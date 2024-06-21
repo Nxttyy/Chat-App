@@ -1,8 +1,11 @@
-from app import app, db
-from flask import render_template, request, redirect, url_for
-from app.forms import ChatForm, JoinRoom, NewRoom
 import secrets
-from app.models import Room, Messages
+
+from flask import redirect, render_template, request, url_for
+
+from app import app, db
+from app.forms import ChatForm, JoinRoom, NewRoom
+from app.models import Messages, Room
+
 
 @app.route("/", methods=['GET', 'POST'])
 def home():
@@ -23,9 +26,11 @@ def home():
 	if roomJoinForm.joinSubmit.data and roomJoinForm.validate_on_submit():
 
 		key = roomJoinForm.key.data
-		room_id = Room.query.filter_by(key=key).first().id
+		room_id = Room.query.filter_by(key=key).first()
+		if room_id:
+			room_id = room_id.id
 
-		return redirect(url_for('room', id = room_id))
+			return redirect(url_for('room', id = room_id))
 		# return render_template("room.html", form=ChatForm(), message=room_id)
 
 	return render_template("home.html", roomJoinForm = roomJoinForm, createRoomForm = createRoomForm, title="Chat-App:Home")
