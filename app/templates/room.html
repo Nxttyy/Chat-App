@@ -23,7 +23,7 @@
         
         <div class="p-5  left-col  bg-info scrollable-div d-flex flex-column  align-items-center h-100">
           
-          <p class="align-self-start">Messages</p>
+          <p class="align-self-start">Messages[{{message_count}}]</p>
           {% for message in messages %}
             <div class="message m-2 w-75"><p>{{ message.content }}</p><p>{{ message.time_sent.strftime("%m/%d/%Y, %H:%M:%S") }}</p><p>username</p></div>
           {% endfor %}

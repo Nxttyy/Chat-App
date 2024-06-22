@@ -6,6 +6,9 @@ from app import app, db
 from app.forms import ChatForm, JoinRoom, NewRoom
 from app.models import Messages, Room
 
+with app.app_context():
+    db.create_all()
+
 
 @app.route("/", methods=['GET', 'POST'])
 def home():
@@ -53,7 +56,8 @@ def room(id):
 		chatForm.textMessage.data = ""
 
 	messages = Room.query.filter_by(id=id).first().messages
+	message_count = len(messages)
 
-	return render_template("room.html", form=chatForm, title="Chat-App:Room", messages = messages)
+	return render_template("room.html", form=chatForm, title="Chat-App:Room", messages = messages, message_count =message_count)
 
 
