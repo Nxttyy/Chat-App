@@ -20,24 +20,22 @@
     </head>
     <body >
       <div class="container m-5">
-        <!-- <h2 class="display-4 text-center">Chat-App</h2> -->
-        <div class="scrollable-div">
-          <div class="p-5  left-col h-80 bg-info">
-            <!-- {% if message %}
-              <p>{{ message }}</p>
-            {% endif%} -->
-            <p>Username</p>
-            {% for message in messages %}
-              <div class="message m-2 scrollable-div"><p>{{ message.content }}</p><p>username</p></div>
-              <!-- <p>{{ message.content }}</p> -->
-            {% endfor %}
-            <form method="POST" action="" class="message-input-form mb-5">
-              {{ form.csrf_token }}
-              <!-- {{ form.textMessage.label }} -->
-              {{ form.textMessage }}
-              {{ form.messageSubmit }}
-            </form>
-          </div>
+        
+        <div class="p-5  left-col  bg-info scrollable-div d-flex flex-column justify-content-center align-items-center">
+          <!-- {% if message %}
+            <p>{{ message }}</p>
+          {% endif%} -->
+          <p>Username</p>
+          {% for message in messages %}
+            <div class="message m-2 w-75"><p>{{ message.content }}</p><p>username</p></div>
+          {% endfor %}
+          <form method="POST" action="" class="message-input-form mb-5">
+            {{ form.csrf_token }}
+            <!-- {{ form.textMessage.label }} -->
+            {{ form.textMessage }}
+            {{ form.messageSubmit }}
+          </form>
         </div>
+        <!-- </div> -->
       </body>
     </html>

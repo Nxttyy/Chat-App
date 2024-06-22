@@ -1,15 +1,16 @@
 html,
 body {
-  margin: 0;
-  padding: 0;
+  margin: 0px;
+  padding: 0px;
 }
 
-html {
+/*html {
   height: 100%;
-}
+}*/
 
 body {
   margin: 0px;
+
   background-color: #ffd500;
   color: white;/*  background-color: "red";*/
   height: 100%;
@@ -86,7 +87,8 @@ body {
 .scrollable-div {
 
  
-  overflow-y: auto; /* Scrollable vertically */
+  overflow-y: scroll; /* Scrollable vertically */
+  max-height: 75vh;
   
 }
 
