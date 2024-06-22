@@ -2,11 +2,12 @@ html,
 body {
   margin: 0px;
   padding: 0px;
+  height:100%;
 }
 
-/*html {
+html {
   height: 100%;
-}*/
+}
 
 body {
   margin: 0px;
@@ -88,7 +89,8 @@ body {
 
  
   overflow-y: scroll; /* Scrollable vertically */
-  max-height: 75vh;
+  max-height: 85vh;
+  background-color: red;
   
 }
 
@@ -96,4 +98,13 @@ body {
 .message-input-form {
   position: absolute;
   bottom: 0; /* Stick to the bottom */
+}
+
+
+
+html,
+body {
+  margin: 0px;
+  padding: 0px;
+  height:100%;
 }

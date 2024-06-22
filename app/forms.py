@@ -4,7 +4,7 @@ from wtforms.validators import InputRequired
 
 
 class ChatForm(FlaskForm):
-    textMessage = StringField("chat", validators=[InputRequired()])
+    textMessage = StringField("chat", validators=[InputRequired()],  render_kw={"placeholder": "Enter Message here",})
     messageSubmit = SubmitField(
         "send", render_kw={"class": "btn btn-info create-room-btn"}
     )

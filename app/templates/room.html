@@ -19,15 +19,13 @@
       <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
     </head>
     <body >
-      <div class="container m-5">
+      <div class="container ">
         
-        <div class="p-5  left-col  bg-info scrollable-div d-flex flex-column justify-content-center align-items-center">
-          <!-- {% if message %}
-            <p>{{ message }}</p>
-          {% endif%} -->
-          <p>Username</p>
+        <div class="p-5  left-col  bg-info scrollable-div d-flex flex-column  align-items-center h-100">
+          
+          <p class="align-self-start">Messages</p>
           {% for message in messages %}
-            <div class="message m-2 w-75"><p>{{ message.content }}</p><p>username</p></div>
+            <div class="message m-2 w-75"><p>{{ message.content }}</p><p>{{ message.time_sent.strftime("%m/%d/%Y, %H:%M:%S") }}</p><p>username</p></div>
           {% endfor %}
           <form method="POST" action="" class="message-input-form mb-5">
             {{ form.csrf_token }}
@@ -36,6 +34,6 @@
             {{ form.messageSubmit }}
           </form>
         </div>
-        <!-- </div> -->
+        </div>
       </body>
     </html>
