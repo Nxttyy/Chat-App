@@ -86,20 +86,17 @@ body {
 
 /* Style for the scrollable div */
 .scrollable-div {
-
- 
   overflow-y: scroll; /* Scrollable vertically */
   max-height: 85vh;
-  background-color: red;
   
+  /* Blurred background */
+  background-color: rgba(255, 0, 0, 0.3); /* Semi-transparent red */
+  backdrop-filter: blur(10px); /* Adjust blur intensity */
+  
+  /* Optional: More styling */
+  padding: 1rem;
+  border-radius: 8px;
 }
-
-
-.message-input-form {
-  position: absolute;
-  bottom: 0; /* Stick to the bottom */
-}
-
 
 
 html,
@@ -108,3 +105,87 @@ body {
   padding: 0px;
   height:100%;
 }
+
+
+
+
+
+
+ /* Reset */
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: "Inter", sans-serif;
+    }
+
+    /* Main Container */
+    .container {
+      background-color: #ffd500;
+      color: #03071e;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Scrollable Message Area */
+    .scrollable-div {
+      width: 80%;
+      max-height: 60vh;
+      overflow-y: scroll;
+      background-color: #03071e;
+      color: #ffee32;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      margin-bottom: 20px;
+    }
+
+    /* Message Item */
+    .message {
+      background-color: #222;
+      color: #ffee32;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Message Text */
+    .message p {
+      margin: 0;
+    }
+
+    /* Input Form */
+    .message-input-form {
+      display: flex;
+      width: 80%;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .message-input-form input[type="text"] {
+      flex: 1;
+      padding: 8px;
+      border: 1px solid #03071e;
+      border-radius: 4px;
+    }
+
+    .message-input-form button {
+      background-color: #03071e;
+      color: #ffee32;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    /* Messages Header */
+    .messages-header {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }

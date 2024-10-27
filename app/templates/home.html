@@ -22,13 +22,13 @@
 
     <!-- Right Column: Join Room -->
     <div class="col right-col mx-2 rounded shadow-lg d-flex flex-column justify-content-center align-items-center">
-      <div class="p-3">
-        <p class="h1">Join a Room</p>
+      <!--<div class="p-3">-->
+        <p class="h1 pb-3">Join a Room</p>
         <form method="POST" action="/" class="d-flex flex-column w-50 justify-content-center align-items-center">
           {{ roomJoinForm.csrf_token }} {{ roomJoinForm.key }}
           <div class="p-3">{{ roomJoinForm.joinSubmit }}</div>
         </form>
-      </div>
+      <!--</div>-->
     </div>
   </div>
 </div>
