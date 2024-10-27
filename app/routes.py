@@ -6,6 +6,8 @@ from app import app, db
 from app.forms import ChatForm, JoinRoom, NewRoom
 from app.models import Messages, Room
 
+from .extensions import socketio
+
 with app.app_context():
     db.create_all()
 
@@ -56,8 +58,6 @@ def home():
 def room(id):
     chatForm = ChatForm()
     if chatForm.messageSubmit.data:
-        print("MSG")
-
         content = chatForm.textMessage.data
         _message = Messages(content=content, room_id=id)
 
@@ -65,6 +65,17 @@ def room(id):
         db.session.commit()
 
         chatForm.textMessage.data = ""
+
+        # Emit the message to all users in the specific room without additional filtering
+        # print(f"emmited {id}")
+        socketio.emit(
+            "new_message",
+            {
+                "content": _message.content,
+                "time_sent": _message.time_sent.strftime("%m/%d/%Y, %H:%M:%S"),
+            },
+            room=id,
+        )
 
     messages = Room.query.filter_by(id=id).first().messages
     message_count = len(messages)
@@ -74,5 +85,6 @@ def room(id):
         form=chatForm,
         title="Chat-App:Room",
         messages=messages,
+        room_id=id,
         message_count=message_count,
     )

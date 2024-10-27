@@ -1,10 +1,15 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
+from .extensions import socketio
+
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///database.db"
 app.secret_key = "f25e42871b71d695e0edb0deb4404fab"
 # app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+
+# initialize socketio
+socketio.init_app(app)
 
 # initialize the app with the extension
 db = SQLAlchemy(app)
