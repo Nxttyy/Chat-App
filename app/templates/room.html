@@ -5,12 +5,13 @@
     <!--for js socketio-->
     <input type="hidden" id="room-id" value="{{ room_id }}">
     <p class="message-header align-self-start">Messages [{{ message_count }}]</p>
+    <p class="message-header align-self-start">Room: [{{ room_id }}]</p>
 
     {% for message in messages %}
     <div class="message m-2 w-75">
       <p>{{ message.content }}</p>
       <p>{{ message.time_sent.strftime("%m/%d/%Y, %H:%M:%S") }}</p>
-      <p>username</p>
+      <!-- <p>username</p> -->
     </div>
     {% endfor %}
   </div>
