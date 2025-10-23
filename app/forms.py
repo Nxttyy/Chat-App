@@ -4,7 +4,20 @@ from wtforms.validators import InputRequired
 
 
 class ChatForm(FlaskForm):
-    textMessage = StringField("chat", validators=[InputRequired()],  render_kw={"placeholder": "Enter Message here",})
+    textMessage = StringField(
+        "chat",
+        validators=[InputRequired()],
+        render_kw={
+            "placeholder": "Enter Message here",
+        },
+    )
+    username = StringField(
+        "username",
+        validators=[],
+        render_kw={
+            "placeholder": "Enter an optional username",
+        },
+    )
     messageSubmit = SubmitField(
         "send", render_kw={"class": "btn btn-info create-room-btn"}
     )
@@ -24,7 +37,4 @@ class JoinRoom(FlaskForm):
 
 class NewRoom(FlaskForm):
     name = StringField("New Room")
-    newSubmit = SubmitField(
-        "Create Room", render_kw={"class": "create-room-submit"}
-    )
-
+    newSubmit = SubmitField("Create Room", render_kw={"class": "create-room-submit"})

@@ -1,21 +1,30 @@
+import os
+
+from dotenv import load_dotenv
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
 from .extensions import socketio
 
-app = Flask(__name__)
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///database.db"
-app.secret_key = "f25e42871b71d695e0edb0deb4404fab"
-# app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+load_dotenv()
 
-# initialize socketio
-socketio.init_app(app)
+db = SQLAlchemy()
 
-# initialize the app with the extension
-db = SQLAlchemy(app)
 
-# db.init_app(app)
-with app.app_context():
-    db.create_all()
-#
-from app import routes
+def create_app():
+    app = Flask(__name__)
+    app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DATABASE_URL")
+    app.secret_key = os.getenv("SECRET_KEY")
+
+    db.init_app(app)
+    socketio.init_app(app)
+    from app.routes import main  # import blueprint, not app
+
+    app.register_blueprint(main)
+
+    with app.app_context():
+        db.create_all()
+
+    from app import routes
+
+    return app

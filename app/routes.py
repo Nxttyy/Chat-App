@@ -1,18 +1,20 @@
 import secrets
 
-from flask import redirect, render_template, url_for
+from flask import Blueprint, redirect, render_template, url_for
 
-from app import app, db
+from app import db
 from app.forms import ChatForm, JoinRoom, NewRoom
-from app.models import Messages, Room
+from app.models import Message, Room
 
 from .extensions import socketio
 
-with app.app_context():
-    db.create_all()
+# with app.app_context():
+#     db.create_all()
+#
+main = Blueprint("main", __name__)
 
 
-@app.route("/", methods=["GET", "POST"])
+@main.route("/", methods=["GET", "POST"])
 def home():
     roomJoinForm = JoinRoom()
     createRoomForm = NewRoom()
@@ -40,7 +42,7 @@ def home():
             room = Room.query.filter_by(key=key).first()
             if room:
                 room_id = room.id
-                return redirect(url_for("room", id=room_id))
+                return redirect(url_for("main.room", id=room_id))
             else:
                 print("Room ID not found!")
         else:
@@ -54,12 +56,14 @@ def home():
     )
 
 
-@app.route("/room/<id>", methods=["GET", "POST"])
+@main.route("/room/<id>", methods=["GET", "POST"])
 def room(id):
     chatForm = ChatForm()
     if chatForm.messageSubmit.data:
         content = chatForm.textMessage.data
-        _message = Messages(content=content, room_id=id)
+        username = chatForm.username.data
+
+        _message = Message(content=content, room_id=id, username=username)
 
         db.session.add(_message)
         db.session.commit()
@@ -68,10 +72,12 @@ def room(id):
 
         # Emit the message to all users in the specific room without additional filtering
         # print(f"emmited {id}")
+        # print(_message)
         socketio.emit(
             "new_message",
             {
                 "content": _message.content,
+                "username": _message.username,
                 "time_sent": _message.time_sent.strftime("%m/%d/%Y, %H:%M:%S"),
             },
             room=id,

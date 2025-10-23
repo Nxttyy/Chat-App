@@ -10,14 +10,14 @@
     {% for message in messages %}
     <div class="message m-2 w-75">
       <p>{{ message.content }}</p>
+      <p>{{ message.username }}</p>
       <p>{{ message.time_sent.strftime("%m/%d/%Y, %H:%M:%S") }}</p>
-      <!-- <p>username</p> -->
     </div>
     {% endfor %}
   </div>
 
     <form method="POST" action="" class="message-input-form mb-5">
-      {{ form.csrf_token }} {{ form.textMessage }} {{ form.messageSubmit }}
+      {{ form.csrf_token }} {{ form.textMessage }} {{ form.username }} {{ form.messageSubmit }}
     </form>
 
 </div>

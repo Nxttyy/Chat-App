@@ -1,33 +1,30 @@
-
- //window.onload = function() {
 document.addEventListener("DOMContentLoaded", function () {
-    var socket = io();
-    socket.on('connect', function() {
-        socket.emit('my event', { data: "I'm connected!" });
+  const socket = io();
 
-        const roomId = document.getElementById('room-id').value;
-        console.log(roomId)
-        socket.emit('join', { room_id: roomId });
+  const roomId = document.getElementById("room-id").value;
+  const messagesDiv = document.querySelector(".chat-messages");
 
-    });
-  // Listen for incoming messages and append to chat
-    socket.on('new_message', function(data) {
-        console.log("there")
-      const messageContainer = document.createElement("div");
-        messageContainer.classList.add("message", "m-2", "w-75");
-        
+  socket.on("connect", function () {
+    socket.emit("my event", { data: "I'm connected!" });
+    socket.emit("join", { room_id: roomId });
+  });
 
-        messageContainer.innerHTML = `
-            <p>${data.content}</p>
-            <p>${data.time_sent}</p>
-            <p>username</p>
-        `;
+  socket.on("new_message", function (data) {
+    const messageContainer = document.createElement("div");
+    messageContainer.classList.add("message");
 
-        document.querySelector(".scrollable-div").appendChild(messageContainer);
-        console.log("recieved")
-    });
+    messageContainer.innerHTML = `
+      <div class="message-info">
+        <span class="username">${data.username}</span>
+        <span class="timestamp">${data.time_sent}</span>
+      </div>
+      <p class="message-content">${data.content}</p>
+    `;
+
+    messagesDiv.appendChild(messageContainer);
+
+    messagesDiv.scrollTop = messagesDiv.scrollHeight;
+  });
+
+  messagesDiv.scrollTop = messagesDiv.scrollHeight;
 });
- //}
-
-
-  
