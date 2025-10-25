@@ -120,7 +120,7 @@ markupsafe==3.0.3 \
     #   jinja2
     #   werkzeug
     #   wtforms
-psycopg2-binary==2.9.11 \
+psycopg2-binary==2.9.6 \
     --hash=sha256:04195548662fa544626c8ea0f06561eb6203f1984ba5b4562764fbeb4c3d14b1 \
     --hash=sha256:366df99e710a2acd90efed3764bb1e28df6c675d33a7fb40df9b7281694432ee \
     --hash=sha256:4012c9c954dfaccd28f94e84ab9f94e12df76b4afb22331b1f0d3154893a6316 \
